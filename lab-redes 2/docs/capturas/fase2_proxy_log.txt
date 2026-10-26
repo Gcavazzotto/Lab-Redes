@@ -1,0 +1,96 @@
+[sessao -] proxy MITM escutando em 0.0.0.0:5050, encaminhando para 10.10.0.10:5050 [COM modificacao]
+[sessao -] Ctrl+C para encerrar.
+[sessao 1] nova conexao de 10.10.0.30:35342
+[sessao 1] conectado ao servidor real 10.10.0.10:5050
+[sessao 1] S->C repassa  : OK KVP servidor pronto
+[sessao 1] C->S repassa  : LOGIN admin s3nh4-pucrs
+[sessao 1] S->C repassa  : OK logado como admin
+[sessao 1] C->S ORIGINAL : SET destino conta-do-bernardo
+[sessao 1] C->S ALTERADA : SET destino conta-do-atacante   (regra: regra_redireciona_destino)
+[sessao 1] S->C repassa  : OK gravado destino
+[sessao 1] C->S repassa  : GET destino
+[sessao 1] S->C repassa  : VALUE destino conta-do-atacante
+[sessao 1] C->S repassa  : SET saldo 100
+[sessao 1] S->C repassa  : OK gravado saldo
+[sessao 1] C->S repassa  : GET saldo
+[sessao 1] S->C ORIGINAL : VALUE saldo 100
+[sessao 1] S->C ALTERADA : VALUE saldo 999999   (regra: regra_infla_saldo)
+[sessao 1] C->S repassa  : QUIT
+[sessao 1] S->C repassa  : BYE
+[sessao 1] sessao encerrada
+[sessao 2] nova conexao de 10.10.0.30:41906
+[sessao 2] conectado ao servidor real 10.10.0.10:5050
+[sessao 2] S->C repassa  : OK KVP servidor pronto
+[sessao 2] sessao encerrada
+[sessao 3] nova conexao de 10.10.0.30:41912
+[sessao 3] conectado ao servidor real 10.10.0.10:5050
+[sessao 3] S->C repassa  : OK KVP servidor pronto
+[sessao 3] C->S repassa  : LOGIN admin s3nh4-pucrs
+[sessao 3] S->C repassa  : OK logado como admin
+[sessao 3] C->S ORIGINAL : SET destino conta-do-bernardo
+[sessao 3] C->S ALTERADA : SET destino conta-do-atacante   (regra: regra_redireciona_destino)
+[sessao 3] S->C repassa  : OK gravado destino
+[sessao 3] C->S repassa  : GET destino
+[sessao 3] S->C repassa  : VALUE destino conta-do-atacante
+[sessao 3] C->S repassa  : SET saldo 100
+[sessao 3] S->C repassa  : OK gravado saldo
+[sessao 3] C->S repassa  : GET saldo
+[sessao 3] S->C ORIGINAL : VALUE saldo 100
+[sessao 3] S->C ALTERADA : VALUE saldo 999999   (regra: regra_infla_saldo)
+[sessao 3] C->S repassa  : QUIT
+[sessao 3] S->C repassa  : BYE
+[sessao 3] sessao encerrada
+[sessao 4] nova conexao de 10.10.0.30:41926
+[sessao 5] nova conexao de 10.10.0.30:41916
+[sessao 6] nova conexao de 10.10.0.30:41938
+[sessao 4] conectado ao servidor real 10.10.0.10:5050
+[sessao 5] conectado ao servidor real 10.10.0.10:5050
+[sessao 6] conectado ao servidor real 10.10.0.10:5050
+[sessao 4] S->C repassa  : OK KVP servidor pronto
+[sessao 6] S->C repassa  : OK KVP servidor pronto
+[sessao 5] S->C repassa  : OK KVP servidor pronto
+[sessao 4] C->S repassa  : LOGIN admin s3nh4-pucrs
+[sessao 6] C->S repassa  : LOGIN admin s3nh4-pucrs
+[sessao 5] C->S repassa  : LOGIN admin s3nh4-pucrs
+[sessao 6] S->C repassa  : OK logado como admin
+[sessao 4] S->C repassa  : OK logado como admin
+[sessao 5] S->C repassa  : OK logado como admin
+[sessao 6] C->S ORIGINAL : SET destino conta-do-bernardo
+[sessao 6] C->S ALTERADA : SET destino conta-do-atacante   (regra: regra_redireciona_destino)
+[sessao 4] C->S ORIGINAL : SET destino conta-do-bernardo
+[sessao 4] C->S ALTERADA : SET destino conta-do-atacante   (regra: regra_redireciona_destino)
+[sessao 5] C->S ORIGINAL : SET destino conta-do-bernardo
+[sessao 5] C->S ALTERADA : SET destino conta-do-atacante   (regra: regra_redireciona_destino)
+[sessao 6] S->C repassa  : OK gravado destino
+[sessao 4] S->C repassa  : OK gravado destino
+[sessao 5] S->C repassa  : OK gravado destino
+[sessao 5] C->S repassa  : GET destino
+[sessao 6] C->S repassa  : GET destino
+[sessao 4] C->S repassa  : GET destino
+[sessao 5] S->C repassa  : VALUE destino conta-do-atacante
+[sessao 4] S->C repassa  : VALUE destino conta-do-atacante
+[sessao 6] S->C repassa  : VALUE destino conta-do-atacante
+[sessao 4] C->S repassa  : SET saldo 100
+[sessao 6] C->S repassa  : SET saldo 100
+[sessao 5] C->S repassa  : SET saldo 100
+[sessao 4] S->C repassa  : OK gravado saldo
+[sessao 5] S->C repassa  : OK gravado saldo
+[sessao 6] S->C repassa  : OK gravado saldo
+[sessao 5] C->S repassa  : GET saldo
+[sessao 6] C->S repassa  : GET saldo
+[sessao 4] C->S repassa  : GET saldo
+[sessao 5] S->C ORIGINAL : VALUE saldo 100
+[sessao 5] S->C ALTERADA : VALUE saldo 999999   (regra: regra_infla_saldo)
+[sessao 6] S->C ORIGINAL : VALUE saldo 100
+[sessao 6] S->C ALTERADA : VALUE saldo 999999   (regra: regra_infla_saldo)
+[sessao 4] S->C ORIGINAL : VALUE saldo 100
+[sessao 4] S->C ALTERADA : VALUE saldo 999999   (regra: regra_infla_saldo)
+[sessao 4] C->S repassa  : QUIT
+[sessao 5] C->S repassa  : QUIT
+[sessao 6] C->S repassa  : QUIT
+[sessao 4] S->C repassa  : BYE
+[sessao 5] S->C repassa  : BYE
+[sessao 4] sessao encerrada
+[sessao 5] sessao encerrada
+[sessao 6] S->C repassa  : BYE
+[sessao 6] sessao encerrada

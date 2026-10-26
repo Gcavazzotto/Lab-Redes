@@ -1,0 +1,17 @@
+[*] Conectado em 10.10.0.20:5050
+[*] Modo demo Fase 2: trafego que o proxy MITM vai adulterar.
+
+>> LOGIN admin s3nh4-pucrs
+<< OK logado como admin
+>> SET destino conta-do-bernardo
+<< OK gravado destino
+>> GET destino
+<< VALUE destino conta-do-atacante
+>> SET saldo 100
+<< OK gravado saldo
+>> GET saldo
+<< VALUE saldo 999999
+>> QUIT
+<< BYE
+
+[*] Demo Fase 2 concluida. Compare o que foi enviado com o que voltou.

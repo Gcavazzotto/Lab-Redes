@@ -1,0 +1,62 @@
+# Topologia da Fase 2 em nos ISOLADOS (nao e loopback).
+#
+# Rede bridge labnet (10.10.0.0/24) com tres nos de IPs distintos:
+#
+#     cliente (10.10.0.30)  -->  proxy (10.10.0.20)  -->  servidor (10.10.0.10)
+#
+# O cliente aponta para o PROXY (redirecionamento por configuracao). O proxy
+# encaminha para o servidor real e, no caminho, le e altera as mensagens.
+#
+# Cada servico roda em seu proprio namespace de rede, com IP e interface
+# proprios: o trafego entre eles passa por Ethernet real na bridge, nao por
+# loopback. O mesmo codigo roda identico em tres VMs separadas.
+
+name: lab-redes-fase2
+
+services:
+  servidor:
+    build: .
+    container_name: kvp-servidor
+    working_dir: /app/servico_alvo
+    command: python3 servidor.py --host 0.0.0.0 --port 5050
+    cap_add: ["NET_RAW", "NET_ADMIN"]   # permite tcpdump/sniffer neste no
+    volumes:
+      - ..:/app:ro
+      - ./capturas:/cap
+    networks:
+      labnet:
+        ipv4_address: 10.10.0.10
+
+  proxy:
+    build: .
+    container_name: kvp-proxy
+    working_dir: /app/proxy
+    command: python3 proxy_mitm.py --listen 0.0.0.0:5050 --server 10.10.0.10:5050
+    depends_on: ["servidor"]
+    volumes:
+      - ..:/app:ro
+      - ./capturas:/cap
+    networks:
+      labnet:
+        ipv4_address: 10.10.0.20
+
+  cliente:
+    build: .
+    container_name: kvp-cliente
+    working_dir: /app/servico_alvo
+    command: sleep infinity          # fica ocioso; os testes entram via exec
+    cap_add: ["NET_RAW", "NET_ADMIN"]
+    depends_on: ["proxy"]
+    volumes:
+      - ..:/app:ro
+      - ./capturas:/cap
+    networks:
+      labnet:
+        ipv4_address: 10.10.0.30
+
+networks:
+  labnet:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.10.0.0/24
